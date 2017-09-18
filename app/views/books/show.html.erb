@@ -1,0 +1,29 @@
+<p>
+  Params are: <%= params %>
+  <% params.each do |key, val| %>
+    <%= key.class %>
+    <%= val.class %>
+  <% end %>
+</p>
+
+<% if @book %>
+
+  <h1>
+    <%= @book[:title] %>
+    <%= link_to "Edit", edit_book_path(@book[:id]) %>
+    <%= link_to "Delete", delete_book_path(@book[:id]), method: :delete %>
+  </h1>
+  <h3>
+    By: <%= @book[:author] %>
+  </h3>
+  <p>
+    Description: <%= @book[:description] %>
+  </p>
+  <p>
+    Price: $<%= '%.2f' % @book[:price] %>
+  </p>
+  <% else %>
+    <h1>404: Not Found</h1>
+<% end %>
+
+<%= link_to 'Home', books_path %>
