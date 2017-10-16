@@ -9,3 +9,27 @@ h1 {
 ul {
   font-family: helvetica, sans-serif;
 }
+
+input {
+  display: block;
+  margin: 1rem 0 2rem 0;
+}
+
+input, label {
+  display: block;
+  margin-left: 2rem;
+  font-family: monospace;
+  font-size: 1.5rem;
+}
+
+.edit, .delete {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+// .author {
+//   margin-bottom: 1rem;
+// }
+//
+// .title {
+//   display: block;
+// }

@@ -1,24 +1,46 @@
 <!-- <p>
   Params are: <%= params %>
 </p> -->
+<p>
+  <%= params %>
+</p>
+<%= helper_method_here %>
+
+<section class="flash">
+  <% flash.each do |name, msg| %>
+  <div class="<%= name %>">
+    <%= msg %>
+  </div>
+  <% end %>
+</section>
+
 
 <h1>List of Books</h1>
+<% @image = ["fillmurray", "placekitten", "placecage"].sample %>
+<%# image_tag("http://#{@image}.com/300/300", alt: "#{@image} filler") %>
+<%= link_to image_tag("http://#{@image}.com/300/300", alt: "#{@image} filler"), "http://www.google.com" %>
 <ul>
 <% @books.each do |book| %>
     <li>Title:
       <strong>
-        <%= link_to(book[:title], book_path(book[:id]),
+        <%= link_to(book.title, book_path(book.id),
           alt: 'link to', class: 'title')
         %>
+
       </strong>
     </li>
-    <li>Author:
-      <strong><%= book[:author] %></strong>
+    <li class='author'>Author:
+      <strong><%= book.author.name %></strong>
+    </li>
+    <li class='edit delete'>
+      <%= link_to("Delete", book_path(book.id), method: :delete, data: { confirm: "Delete book?" }) %>
+      <%= link_to("Edit", edit_book_path(book.id)) %>
     </li>
 <% end %>
 </ul>
 
 <p>
+  <%= button_to("Add book", new_book_path, method: :get) %>
   <!-- <% if rand(100) % 2 == 0 %>
     <%= 'this is in uppercase!'.upcase! %>
   <% end %> -->

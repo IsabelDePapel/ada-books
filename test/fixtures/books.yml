@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hamlet:
+  title: Hamlet
+  author: shakes
+
+gatsby:
+  title: The Great Gatsby
+  author: fscott
+
+pride:
+  title: Price and Prejudice
+  author: austen
+
+poodr:
+  title: Practical Object Oriented Design in Ruby
+  author: metz
+
+missing_title:
+  author: metz
+  # this is an invalid fixture (no title)
+
+  # Dan says only valid fixtures; then make invalid, then test validity
+  # Chris says ok to create invalid fixtures to test validity

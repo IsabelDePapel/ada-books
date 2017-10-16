@@ -1,2 +1,12 @@
 <h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+
+<!-- When we submit the form, this is the action (path) we'll hit and the method we'll use -->
+<%#<form action="/books" method="post" accept-charset="utf-8">%>
+<%= render partial: "form", locals: { button_name: "Add a new book" } %>
+
+
+<!-- <%= form_tag "/books", class: "delete_products", method: :delete do %>
+<%= text_field_tag "book[author]", "J.K. Rowling", class: "books" %>
+
+<%= submit_tag "Save Book", class: "book-button" %>
+<% end %> -->

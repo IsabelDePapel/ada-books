@@ -1,29 +1,33 @@
-<p>
+<!-- <p>
   Params are: <%= params %>
   <% params.each do |key, val| %>
     <%= key.class %>
     <%= val.class %>
   <% end %>
-</p>
+</p> -->
 
 <% if @book %>
 
   <h1>
-    <%= @book[:title] %>
-    <%= link_to "Edit", edit_book_path(@book[:id]) %>
-    <%= link_to "Delete", delete_book_path(@book[:id]), method: :delete %>
+    <%= @book.title %>
+    <%= link_to "Edit", edit_book_path(@book.id) %>
+    <%= link_to "Delete", book_path(@book.id), method: :delete %>
   </h1>
   <h3>
-    By: <%= @book[:author] %>
+    By: <%= @book.author.name %>
   </h3>
   <p>
-    Description: <%= @book[:description] %>
+    Description: <%= @book.description if @book.description %>
   </p>
   <p>
-    Price: $<%= '%.2f' % @book[:price] %>
+    Price: $<%= ('%.2f' % @book.price) if @book.price %>
   </p>
   <% else %>
     <h1>404: Not Found</h1>
 <% end %>
 
-<%= link_to 'Home', books_path %>
+<%= link_to 'Home', root_path %>
+
+<%= form_tag "/books", class: "delete_products", method: :delete do %>
+
+<% end %>

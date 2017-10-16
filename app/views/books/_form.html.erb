@@ -1,0 +1,26 @@
+<h2>In the partial _form</h2>
+
+<% if @book.errors.any? %>
+  <ul class="errors">
+    <% @book.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label "Author" %>
+  <%# f.text_field :author %>
+  <%= fields_for :author, @book.author do |author_field| %>
+    <%= author_field.text_field :name %>
+  <% end %>
+
+  <%= f.select :author_id, options_from_collection_for_select(Author.all, "id", "name") %>
+
+  <%= f.submit button_name %>
+<% end %>
