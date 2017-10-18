@@ -3,6 +3,26 @@ require 'test_helper'
 class BooksControllerTest < ActionDispatch::IntegrationTest
   let(:book_params) { { title: "A Title", author_id: authors(:shakes).id } }
 
+  describe "Authenticated Users" do
+    it "allows authenticated users to edit a book" do
+      user = users(:kari)
+      log_in(user, :github)
+
+      get edit_book_path(Book.first.id)
+
+      must_respond_with :success
+    end
+  end
+
+  describe "guest users" do
+    it "does not allow guest users to edit a book" do
+      get edit_book_path(Book.first.id)
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+  end
+
   it "should get index" do
     get books_path
     must_respond_with :success
