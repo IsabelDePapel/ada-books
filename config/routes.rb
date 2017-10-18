@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login_form'
   post '/login', to: 'sessions#login'
 
+  # for oauth
+  # no need to name b/c never going to have a link to it
+  get '/auth/:provider/callback', to: 'sessions#create'
   # get '/books', to: 'books#index', as: 'books' # books_path   this names the path (goes in server-side code)
   # # id here is a variable name (rails route notation)
   # get '/books/:id/edit', to: 'books#edit', as: 'edit_book' # edit_book_path

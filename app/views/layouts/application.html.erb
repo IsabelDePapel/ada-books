@@ -11,6 +11,23 @@
   <body>
     <!--This provides the default layout; CAN change, but DON'T (for now)
     If you want to put a nav bar, you can do put this here so it doesn't repeat in all the view files -->
+    <header>
+      <h1>Ada Books</h1>
+        <p>
+          <% if @user %>
+            <%= "Welcome #{@user.name}" %>
+          <% else %>
+            <%= link_to "Log in with GitHub", "/auth/github" %>
+          <% end %>
+        </p>
+    </header>
+
+    <section class="flash">
+      <% flash.each do |name, msg| %>
+        <div class="<%= name %>"> <%= msg %></div>
+      <% end %>
+    </section>
+
     <%= yield %>
   </body>
 </html>
